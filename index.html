@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emergency Service Directory</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: { extend: {} },
+        plugins: [daisyui],
+      };
+    </script>
+    <style>
+      body {
+        background: #f6fff8;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen">
+    <!-- Navbar -->
+    <header
+      class="flex items-center justify-between px-4 md:px-8 py-4 bg-white shadow"
+    >
+      <!-- Left: Logo and 2-line title -->
+      <div class="flex items-center gap-2">
+        <img src="assets/logo.png" alt="Logo" class="w-10 h-10" />
+        <div class="flex flex-col leading-tight">
+          <span class="font-bold text-lg" style="color: #006747"
+            >Emergency</span
+          >
+          <span class="font-bold text-lg" style="color: #006747">Service</span>
+        </div>
+      </div>
+      <!-- Right: Counts and Copy button -->
+      <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1 bg-green-50 rounded-full px-3 py-1">
+          <span id="favCount" class="font-bold text-black">0</span>
+          <img src="assets/heart.png" class="w-5 h-5" />
+        </div>
+        <div class="flex items-center gap-1 bg-green-50 rounded-full px-3 py-1">
+          <span id="coinCount" class="font-bold text-black">100</span>
+          <img src="assets/coin.png" class="w-5 h-5" />
+        </div>
+        <button
+          class="text-white font-semibold rounded-full px-5 py-2 transition-all"
+          style="background: #00a63e"
+        >
+          <span id="copyCount">0</span> Copy
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      class="bg-gradient-to-r from-green-700 to-green-500 py-8 text-center text-white"
+    >
+      <img src="assets/logo-dark.png" class="mx-auto w-16 mb-2" />
+      <h1 class="text-2xl md:text-3xl font-bold">
+        Emergency Service Directory
+      </h1>
+      <p class="mt-2 text-sm md:text-base">
+        Government Emergency Services at Your Fingertip – A Project by
+        Government of the People's Republic of Bangladesh
+      </p>
+    </section>
+
+    <!-- Main Section -->
+    <main class="flex flex-col md:flex-row gap-4 px-2 md:px-8 py-8">
+      <!-- Card Section -->
+      <section
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 flex-1"
+        id="serviceCards"
+      >
+        <!-- Cards will be injected here -->
+      </section>
+      <!-- History Section -->
+      <aside class="w-full md:w-80 bg-white rounded-xl shadow p-4">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <img src="assets/fire-service.png" class="w-6 h-6" />
+            <h2 class="font-bold text-lg">Call History</h2>
+          </div>
+          <button
+            class="btn btn-xs btn-outline btn-error"
+            onclick="clearHistory()"
+          >
+            Clear
+          </button>
+        </div>
+        <ul id="callHistory" class="space-y-2 text-sm"></ul>
+      </aside>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
