@@ -81,15 +81,15 @@ function renderCards() {
     <div class="card bg-white shadow rounded-xl p-4 relative flex flex-col">
       <div class="flex items-center mb-2 relative">
         <img src="${s.icon}" class="w-8 h-8"/>
-        <button onclick="toggleFav(${i})"
+          <button onclick="toggleFav(${i})"
                 class="absolute top-0 right-0"
                 style="background:transparent;border:none;padding:0;">
-          <img src="assets/heart.png"
-               id="fav${i}"
-               class="w-6 h-6 transition-all ${
-                 favs.includes(i) ? "" : "grayscale"
-               }"
-               alt="heart" />
+          <i id="fav${i}" 
+             class="${
+               favs.includes(i)
+                 ? "fa-solid fa-heart text-red-500"
+                 : "fa-regular fa-heart text-black-500"
+             } text-xl transition-all"></i>
         </button>
       </div>
       <h3 class="font-bold text-black text-lg">${s.name}</h3>
@@ -105,7 +105,7 @@ function renderCards() {
           <i class="fa-regular fa-copy"></i>
           Copy
         </button>
-        <button class="btn btn-xs btn-success flex-1 flex items-center gap-1" onclick="callService('${
+        <button class="btn btn-xs btn-success flex-1 flex items-center gap-1 text-white" onclick="callService('${
           s.name
         }','${s.number}',${i})">
           <i class="fa-solid fa-phone"></i>
@@ -125,10 +125,12 @@ function renderHistory() {
   ul.innerHTML = callHistory
     .map(
       (h) => `
-    <li class="border-b pb-2">
-      <b>${h.name}</b><br>
-      ${h.number}<br>
-      <span class="text-xs text-gray-400">${h.time}</span>
+    <li class="bg-gray-100 rounded-lg p-2 mb-2">
+      <div class="flex justify-between">
+        <span class="font-bold text-black">${h.name}</span>
+        <span class="text-xs text-black">${h.time}</span>
+      </div>
+      <div class="text-black text-sm">${h.number}</div>
     </li>
   `
     )
@@ -137,13 +139,18 @@ function renderHistory() {
 
 // Heart icon logic
 function toggleFav(idx) {
+  const favIcon = document.getElementById("fav" + idx);
+
   if (favs.includes(idx)) {
     favs = favs.filter((i) => i !== idx);
+    favIcon.className =
+      "fa-regular fa-heart text-gray-600 text-xl transition-all";
   } else {
     favs.push(idx);
+    favIcon.className = "fa-solid fa-heart text-red-500 text-xl transition-all";
   }
+
   document.getElementById("favCount").textContent = favs.length;
-  renderCards();
 }
 
 // Copy logic
