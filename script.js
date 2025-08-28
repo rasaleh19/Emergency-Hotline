@@ -81,7 +81,6 @@ function renderCards() {
     <div class="card bg-white shadow rounded-xl p-4 relative flex flex-col">
       <div class="flex items-center mb-2 relative">
         <img src="${s.icon}" class="w-8 h-8"/>
-        <span class="badge badge-outline ml-2">${s.tag}</span>
         <button onclick="toggleFav(${i})"
                 class="absolute top-0 right-0"
                 style="background:transparent;border:none;padding:0;">
@@ -93,27 +92,30 @@ function renderCards() {
                alt="heart" />
         </button>
       </div>
-      <h3 class="font-bold text-lg">${s.name}</h3>
+      <h3 class="font-bold text-black text-lg">${s.name}</h3>
       <p class="text-sm text-gray-500 mb-2">${s.type}</p>
-      <div class="text-2xl font-bold mb-2">${s.number}</div>
+      <div class="text-2xl font-bold text-black mb-2">${s.number}</div>
+      <div class="mb-2">
+        <span class="badge badge-outline">${s.tag}</span>
+      </div>
       <div class="flex gap-2 mt-auto">
-        <button class="btn btn-xs btn-outline flex items-center gap-1" onclick="copyNumber('${
+        <button class="btn btn-xs btn-outline flex-1 flex items-center gap-1" onclick="copyNumber('${
           s.number
         }')">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16h8M8 12h8m-8-4h8M4 6h16"/></svg>
+          <i class="fa-regular fa-copy"></i>
           Copy
         </button>
-        <button class="btn btn-xs btn-success flex items-center gap-1" onclick="callService('${
+        <button class="btn btn-xs btn-success flex-1 flex items-center gap-1" onclick="callService('${
           s.name
         }','${s.number}',${i})">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A2 2 0 0020 6.382V5a2 2 0 00-2-2H6a2 2 0 00-2-2v1.382a2 2 0 00.447 1.342L9 10m6 0v4a2 2 0 01-2 2H7a2 2 0 01-2-2v-4m6 0h2a2 2 0 012 2v4a2 2 0 01-2 2H7a2 2 0 01-2-2v-4"/></svg>
+          <i class="fa-solid fa-phone"></i>
           Call
         </button>
       </div>
     </div>
   `
     )
-    .slice(0, 6)
+    .slice(0)
     .join("");
 }
 
