@@ -78,7 +78,7 @@ function renderCards() {
   section.innerHTML = services
     .map(
       (s, i) => `
-    <div class="card bg-white shadow rounded-xl p-4 relative flex flex-col">
+    <div class="card bg-white shadow rounded-xl p-4 relative flex flex-col w-full min-h-[220px]">
       <div class="flex items-center mb-2 relative">
         <img src="${s.icon}" class="w-8 h-8"/>
           <button onclick="toggleFav(${i})"
